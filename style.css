@@ -1,0 +1,17 @@
+body {
+    background-color: cadetblue;
+}
+#dotCont {
+    display: flex;
+    width: 100%;
+    height: 500px;
+    align-items: flex-end;
+    justify-content: center;
+}
+.dot {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(255, 255, 255);
+    opacity: 0.5;
+}

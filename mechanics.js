@@ -5,7 +5,7 @@ let playerSelection = prompt("What would you like to pick?: ");
 dots = [document.getElementById("dot0"), document.getElementById("dot1"), 
 document.getElementById("dot2"), document.getElementById("dot3"), 
 document.getElementById("dot4"), document.getElementById("dot5"), 
-document.getElementById("dot6")]; /*nie działa*/
+document.getElementById("dot6")];
 
 let computerSelection;
                  
@@ -53,6 +53,7 @@ function playerWon() {
             console.log("you won"); 
         }
         addPP()
+        
     }
 function playerLost()  {
     if (cp < 5) {
@@ -62,6 +63,7 @@ function playerLost()  {
             console.log("you lost");  
          }
          addCP()
+         
     }
     function playGame() {
         setTimeout(() => {
@@ -72,9 +74,17 @@ function playerLost()  {
     }         
     function addPP() {
         dots[pp].style.opacity = "1";
+        changeGreen()
         pp++;
     }
     function addCP() {
         dots[cp].style.opacity = "1";
+        changeRed()
         cp++;
+    }
+    function changeGreen() {
+        dots[pp].style.backgroundColor = "green";
+    }
+    function changeRed() {
+        dots[cp].style.backgroundColor = "red";
     }

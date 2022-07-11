@@ -6,7 +6,7 @@ body {
     width: 100%;
     height: 500px;
     align-items: flex-end;
-    justify-content: center;
+    justify-content: space-between;
 }
 .dot {
     border-radius: 50%;
@@ -14,4 +14,8 @@ body {
     height: 50px;
     background-color: rgb(255, 255, 255);
     opacity: 0.5;
+    margin: 10px;
+}
+#compPoints, #playPoints {
+    display: flex;
 }

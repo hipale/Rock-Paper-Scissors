@@ -1,14 +1,20 @@
 let pp = 0;
 let cp = 3;
 let playerSelection = prompt("What would you like to pick?: ");
+checkIfSelect()
+function checkIfSelect() {
+while (playerSelection == null) {
+    playerSelection = prompt("What would you like to pick?: ");
+}
+}
 
 dots = [document.getElementById("dot0"), document.getElementById("dot1"),
 document.getElementById("dot2"), document.getElementById("dot3"),
 document.getElementById("dot4"), document.getElementById("dot5"),
 document.getElementById("dot6")];
 
-playWin = ["Scissors", "Paper", "Rock"];
-playLost = ["Rock", "Scissors", "Paper"];
+const playWin = ["Scissors", "Paper", "Rock"];
+const playLost = ["Rock", "Scissors", "Paper"];
 
 let computerSelection;
 
@@ -18,8 +24,6 @@ function computerPlay() {
     computerSelection = compNum[i];
 }
 computerPlay();
-
-
 
 function scoreGet() {
     if (playerSelection[0].toUpperCase() == computerSelection[0]) {
@@ -71,6 +75,7 @@ function playerLost() {
 function playGame() {
     setTimeout(() => {
         playerSelection = prompt("What would you like to pick?: ");
+        checkIfSelect()
         computerPlay()
         scoreGet()
     }, 2000)

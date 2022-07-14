@@ -96,3 +96,13 @@ function changeGreen() {
 function changeRed() {
     dots[cp].style.backgroundColor = "red";
 }
+
+let inp = "hello"
+let num = inp.length-1;
+
+const reverseString = function() {
+    for(num; num >= 0; num--) {
+     return inp[num];
+};
+};
+reverseString()

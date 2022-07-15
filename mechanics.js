@@ -1,37 +1,46 @@
 let pp = 0;
 let cp = 3;
-
+let compChoicePic = document.querySelector("#buttPic");
+compChoicePic.style.visibility = "hidden";
+const scoreCont = document.querySelector("#scoreCont");
+compSelector = ["Paper", "Rock", "Scissors"];
+compEmoji = ["&#128209;", "&#128507;", "&#x2702;"]
+compNum = ["Paper", "Rock", "Scissors"];
+let button = document.querySelector("#playButt");
+let playerSelection;
+button.addEventListener("click", playRound);
 let score = document.querySelector("#score");
-
 dots = [document.getElementById("dot0"), document.getElementById("dot1"),
 document.getElementById("dot2"), document.getElementById("dot3"),
 document.getElementById("dot4"), document.getElementById("dot5"),
 document.getElementById("dot6")];
+let computerSelection;
 
 
-let compButt = document.querySelector("#compButt");
-let button = document.querySelector("#playButt");
-let playerSelection;
-button.addEventListener("click", playRound);
+function showCompChoice() {
+    compChoicePic.style.visibility = "visible";
+compChoicePic.innerHTML = computerSelection;
+};
 
 function playRound(e) {
     computerPlay()
     playerSelection = e.target.className;
     scoreGet() 
 }
-let computerSelection;
+
 
 function computerPlay() {
-    compNum = ["Paper", "Rock", "Scissors"];
+    
     i = Math.floor(Math.random() * 3);
     computerSelection = compNum[i];
-    compChoice()
+    computerSelectionEmoij = compEmoji[i];
 }
 computerPlay();
 
 function scoreGet() {
+    showCompChoice()
     if (playerSelection == computerSelection) {
-        div.innerHTML = "Draw";
+        scoreCont.innerHTML = "Draw";
         playGame()
     } else if (playerSelection == "Paper") {
         if (computerSelection == "Rock") {
@@ -56,13 +65,9 @@ function scoreGet() {
 
 function playerWon() {
     if (pp < 2) {
-        
-        score = `you won ${playerSelection} beats ${computerSelection}`;
-        
         console.log(pp + 1);
         playGame()
     } else {
-        score = "you won";
         removeEvent()
     }
     addPP()
@@ -71,21 +76,20 @@ function playerWon() {
 }
 function playerLost() {
     if (cp < 5) {
-        createLoseDiv()
         console.log(cp - 2);
         playGame()
     } else {
-        score = "you lost";
         removeEvent()
     }
     addCP()
-
+    createLoseDiv()
 }
 function playGame() {
     setTimeout(() => {
         playerSelection;
         i;
     }, 2000)
+    
 }
 function addPP() {
     dots[pp].style.opacity = "1";
@@ -98,27 +102,20 @@ function addCP() {
     cp++;
 }
 function changeGreen() {
-    dots[pp].style.backgroundColor = "green";
+    dots[pp].style.backgroundColor = "#BBFFBB";
 };
 function changeRed() {
-    dots[cp].style.backgroundColor = "red";
+    dots[cp].style.backgroundColor = "#BBBBFF";
 };
 function removeEvent() {
     button.removeEventListener("click", playRound);
 };
-function compChoice(e) {
-if (compButt.className == computerSelection) {
-    e.target.style.border = "2px solid red";
-}
-};
 
-const scoreCont = document.querySelector("#scoreCont");
-let div = document.createElement("div");
-scoreCont.appendChild(div);
+
 
 function createWinDiv() {
-   div.innerHTML = `you won ${playerSelection} beats ${computerSelection}`;
+   scoreCont.innerHTML = `You won ${playerSelection} beats ${computerSelection}`;
 }
 function createLoseDiv() {
-    div.innerHTML = `you lost ${computerSelection} beats ${playerSelection}`;
+    scoreCont.innerHTML = `You lost ${computerSelection} beats ${playerSelection}`;
 }

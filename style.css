@@ -21,8 +21,13 @@ body {
 #compPoints, #playPoints {
     display: flex;
 }
-Button {
+Button, #buttPic {
     width: 200px;
     height: 200px;
     background-color: rgb(26, 189, 211);
+    border: 3px solid rgba(5, 1, 2, 0.377);
+    font-size: 50px;
+}
+#compButt {
+    text-align: center;
 }

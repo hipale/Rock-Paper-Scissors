@@ -1,18 +1,23 @@
 let pp = 0;
 let cp = 3;
 
+let score = document.querySelector("#score");
+
 dots = [document.getElementById("dot0"), document.getElementById("dot1"),
 document.getElementById("dot2"), document.getElementById("dot3"),
 document.getElementById("dot4"), document.getElementById("dot5"),
 document.getElementById("dot6")];
 
+
+let compButt = document.querySelector("#compButt");
 let button = document.querySelector("#playButt");
 let playerSelection;
 button.addEventListener("click", playRound);
 
 function playRound(e) {
+    computerPlay()
     playerSelection = e.target.className;
-    scoreGet()
+    scoreGet() 
 }
 let computerSelection;
 
@@ -20,12 +25,13 @@ function computerPlay() {
     compNum = ["Paper", "Rock", "Scissors"];
     i = Math.floor(Math.random() * 3);
     computerSelection = compNum[i];
+    compChoice()
 }
 computerPlay();
 
 function scoreGet() {
     if (playerSelection == computerSelection) {
-        console.log("it's a draw")
+        div.innerHTML = "Draw";
         playGame()
     } else if (playerSelection == "Paper") {
         if (computerSelection == "Rock") {
@@ -50,32 +56,35 @@ function scoreGet() {
 
 function playerWon() {
     if (pp < 2) {
-        console.log(`you won ${playerSelection} beats ${computerSelection}`);
+        
+        score = `you won ${playerSelection} beats ${computerSelection}`;
+        
         console.log(pp + 1);
         playGame()
     } else {
-        console.log("you won");
-        removeE()
+        score = "you won";
+        removeEvent()
     }
     addPP()
+    createWinDiv()
 
 }
 function playerLost() {
     if (cp < 5) {
-        console.log(`you lost ${computerSelection} beats ${playerSelection}`);
+        createLoseDiv()
         console.log(cp - 2);
         playGame()
     } else {
-        console.log("you lost");
-        removeE()
+        score = "you lost";
+        removeEvent()
     }
     addCP()
 
 }
 function playGame() {
     setTimeout(() => {
-        computerPlay()
         playerSelection;
+        i;
     }, 2000)
 }
 function addPP() {
@@ -94,6 +103,22 @@ function changeGreen() {
 function changeRed() {
     dots[cp].style.backgroundColor = "red";
 };
-function removeE() {
+function removeEvent() {
     button.removeEventListener("click", playRound);
+};
+function compChoice(e) {
+if (compButt.className == computerSelection) {
+    e.target.style.border = "2px solid red";
+}
+};
+
+const scoreCont = document.querySelector("#scoreCont");
+let div = document.createElement("div");
+scoreCont.appendChild(div);
+
+function createWinDiv() {
+   div.innerHTML = `you won ${playerSelection} beats ${computerSelection}`;
+}
+function createLoseDiv() {
+    div.innerHTML = `you lost ${computerSelection} beats ${playerSelection}`;
 }

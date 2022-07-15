@@ -28,6 +28,8 @@ Button, #buttPic {
     border: 3px solid rgba(5, 1, 2, 0.377);
     font-size: 50px;
 }
-#compButt {
-    text-align: center;
+#buttPic {
+   display: flex;
+   align-items: center;
+   justify-content: center;
 }

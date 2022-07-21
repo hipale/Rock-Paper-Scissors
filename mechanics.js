@@ -9,7 +9,7 @@ let button = document.querySelector("#playButt");
 let playerSelection;
 button.addEventListener("click", playRound);
 let score = document.querySelector("#score");
-dots = [document.getElementById("dot0"), document.getElementById("dot1"),
+let dots = [document.getElementById("dot0"), document.getElementById("dot1"),
 document.getElementById("dot2"), document.getElementById("dot3"),
 document.getElementById("dot4"), document.getElementById("dot5"),
 document.getElementById("dot6")];
@@ -122,3 +122,15 @@ function createWinDiv() {
 function createLoseDiv() {  
     scoreCont.innerHTML = `You lost ${computerSelection} beats ${playerSelection}`;
 }
+restart.addEventListener("click", restartGame);
+function restartGame() {
+pp = 0; 
+cp = 3;
+button.addEventListener("click", playRound);
+for (let num = 0; num < 6; num++) {
+    dots[num].style.opacity = "0.5";
+    dots[num].style.backgroundColor = "white";
+};
+endCont.style.transform = "translate(-200%)";
+compChoicePic.style.visibility = "hidden";
+};

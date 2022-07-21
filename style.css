@@ -35,3 +35,17 @@ Button, #buttPic {
    align-items: center;
    justify-content: center;
 }
+img {
+    width: 500px;
+    height: 500px;
+}
+#endCont {
+width: 500px;
+height: 500px;
+transform: translate(-200%);
+transition: 0.75s ease-in-out transform;
+
+}
+#restart {
+    background-color: black;
+}

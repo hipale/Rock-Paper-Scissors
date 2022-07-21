@@ -3,7 +3,6 @@ let cp = 3;
 let compChoicePic = document.querySelector("#buttPic");
 compChoicePic.style.visibility = "hidden";
 const scoreCont = document.querySelector("#scoreCont");
-compSelector = ["Paper", "Rock", "Scissors"];
 compEmoji = ["&#128209;", "&#128507;", "&#x2702;"]
 compNum = ["Paper", "Rock", "Scissors"];
 let button = document.querySelector("#playButt");
@@ -15,11 +14,14 @@ document.getElementById("dot2"), document.getElementById("dot3"),
 document.getElementById("dot4"), document.getElementById("dot5"),
 document.getElementById("dot6")];
 let computerSelection;
-
+let computerSelectionEmoji;
+let restart = document.querySelector("#restart");
+let endCont = document.querySelector("#endCont");
+let endScreen = document.querySelector("#endScreen");
 
 function showCompChoice() {
     compChoicePic.style.visibility = "visible";
-compChoicePic.innerHTML = computerSelection;
+compChoicePic.innerHTML = computerSelectionEmoji;
 };
 
 function playRound(e) {
@@ -30,10 +32,9 @@ function playRound(e) {
 
 
 function computerPlay() {
-    
     i = Math.floor(Math.random() * 3);
     computerSelection = compNum[i];
-    computerSelectionEmoij = compEmoji[i];
+    computerSelectionEmoji = compEmoji[i];
 }
 computerPlay();
 
@@ -59,6 +60,7 @@ function scoreGet() {
             playerWon()
         } else {
             playerLost()
+    
         }
     }
 }
@@ -69,6 +71,7 @@ function playerWon() {
         playGame()
     } else {
         removeEvent()
+        endScreen.innerHTML = "You Won";
     }
     addPP()
     createWinDiv()
@@ -80,6 +83,7 @@ function playerLost() {
         playGame()
     } else {
         removeEvent()
+        endScreen.innerHTML = "You lost";
     }
     addCP()
     createLoseDiv()
@@ -108,14 +112,13 @@ function changeRed() {
     dots[cp].style.backgroundColor = "#BBBBFF";
 };
 function removeEvent() {
+   endCont.style.transform = "translate(0)";
     button.removeEventListener("click", playRound);
 };
-
-
 
 function createWinDiv() {
    scoreCont.innerHTML = `You won ${playerSelection} beats ${computerSelection}`;
 }
-function createLoseDiv() {
+function createLoseDiv() {  
     scoreCont.innerHTML = `You lost ${computerSelection} beats ${playerSelection}`;
 }

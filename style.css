@@ -42,10 +42,22 @@ img {
 #endCont {
 width: 500px;
 height: 500px;
-transform: translate(-200%);
+transform: translate(-300%);
 transition: 0.75s ease-in-out transform;
 
 }
 #restart {
-    background-color: white;
+    background-color: rgb(20, 133, 148);
+    border: 3px solid rgb(10, 123, 138)
+}
+#restart:hover, Button:hover {
+    background-color: rgb(25, 158, 175);
+    opacity: 0.8;
+    transform: scale(0.95);
+}
+#restart:active, Button:active {
+  opacity: 0.5;
+}
+#endScreen {
+    font-size: 50px;
 }
